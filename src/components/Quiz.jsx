@@ -10,6 +10,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import axios from 'axios';
 
 
+//komponent yang akan memunculkan alert yang cantik
 function AlertFun(){
     useEffect(() => {
         setTimeout(() => {
@@ -71,6 +72,7 @@ class Quiz extends React.Component {
         this.answernote = [...this.state.soal]
     }
 
+    //digunakan untuk memulai quiz
     startQuiz(){
         this.setState({start:true})
         this.startTimer()
@@ -95,7 +97,6 @@ class Quiz extends React.Component {
                         finish: true,
                         nowQues: 0
                     })
-                    // console.log(this.state.jawaban)
                 }else{
                     this.setState({
                         nowQues: this.state.nowQues + 1,
@@ -106,7 +107,7 @@ class Quiz extends React.Component {
 
 
 
-
+    //digunakan  untuk mengirim data quiz yang telah kita inputkan ke localstorage
     setResume(benar,salah,kosong, condition){
         let dataInsert =  
             {
@@ -135,7 +136,7 @@ class Quiz extends React.Component {
             
     }
 
-    
+    //digunakan untuk mengganti/mengupdate state jawaban yang kita miliki dengan jawaban yang sudah kita inputkan
     setAnswer(n){
         if(this.state.start){
         let answer = [...this.state.jawaban]
@@ -224,12 +225,6 @@ class Quiz extends React.Component {
                                   {context.skor}
                                 </Badge>
                               </ListGroup.Item>
-                                // return <Card body className='mt-5' key={key}>
-                                //     <h6>Skor : {context.skor}</h6>
-                                //     <h6>Benar : {context.benar}</h6>
-                                //     <h6>Salah : {context.salah}</h6>
-                                //     <h6>osong : {context.kosong}</h6>
-                                //     </Card>
                             })}
                             </ListGroup>
                         </Container>
