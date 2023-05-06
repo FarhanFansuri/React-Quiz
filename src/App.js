@@ -1,25 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Login from './components/Login';
+import {Routes, Route} from 'react-router-dom'
+import Quiz from './components/Quiz';
+import NavbarQuiz from './components/Navbar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends React.Component {
+  number = 0;
+
+  constructor(props){
+    super(props)
+    this.state ={
+      time:0,
+      nextCom: false,
+      data: {}
+    }
+  }
+
+  render(){
+    return(
+     <Routes>
+      <Route path="/" element={
+      <React.Suspense fallback= {<h1 className="mt-5 text-center">Loading...</h1>}>
+      <NavbarQuiz/>
+      <Quiz/>
+      </React.Suspense>
+      }/>
+      <Route path="/login" element={<Login/>}/>
+
+     </Routes>
+    )
+  }
+
 }
 
 export default App;
